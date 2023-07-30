@@ -22,6 +22,7 @@ object Deps {
     const val androidAnnotations = "androidx.annotation:annotation:1.6.0"
     const val navigationFragment = "androidx.navigation:navigation-fragment-ktx:${Versions.navigation}"
     const val navigationUI = "androidx.navigation:navigation-ui-kfx:${Versions.navigation}"
+    const val appCompat = "androidx.appcompat:appcompat:1.6.1"
 
     private const val LIFECYCLE = "2.6.1"
     const val architectureComponentsProcess = "androidx.lifecycle:lifecycle-process:$LIFECYCLE"

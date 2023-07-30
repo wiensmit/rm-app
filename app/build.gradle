@@ -66,6 +66,7 @@ dependencies {
     kapt Deps.kotlinxMetadataProcessor
 
     //Framework dependencies
+    implementation Deps.appCompat
     implementation Deps.daggerHiltAndroid
     implementation Deps.coroutinesCore
     implementation Deps.coroutinesAndroid
