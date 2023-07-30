@@ -1,0 +1,21 @@
+
+buildscript {
+    ext.kotlin_version = Versions.kotlin
+    repositories {
+        google()
+        mavenCentral()
+    }
+    dependencies {
+        classpath Projects.gradleTools
+        classpath Projects.kotlinGradlePlugin
+        classpath Projects.safeArgs
+        classpath Projects.daggerHilt
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}

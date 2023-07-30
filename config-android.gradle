@@ -1,0 +1,26 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion Config.compileSdk
+
+    defaultConfig {
+        manifestPlaceholders
+        minSdkVersion Config.minSdk
+        targetSdkVersion Config.targetSdk
+    }
+
+    kotlinOptions {
+        jvmTarget = '17'
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+
+    buildTypes {
+        debug {}
+        release {}
+    }
+}

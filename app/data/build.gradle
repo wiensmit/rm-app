@@ -1,0 +1,55 @@
+apply plugin: 'com.android.library'
+apply from: '../../config-android.gradle'
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    buildTypes {
+        all {
+            buildConfigField "int", "APP_VERSION", "$Config.versionCode"
+            buildConfigField "String", "VERSION_NAME", "\"$Config.versionName\""
+        }
+        release {
+            buildConfigField "String", "RM_API_URL", "\"https://www.rijksmuseum.nl/api/\""
+        }
+        debug {
+            buildConfigField "String", "RM_API_URL", "\"https://www.rijksmuseum.nl/api/\""
+        }
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    namespace 'com.wiensmit.rmapp.data'
+}
+
+dependencies {
+    implementation project(':app:domain')
+    implementation project(':app:common')
+
+    kapt Deps.daggerHiltCompiler
+    kapt Deps.kotlinxMetadataProcessor
+
+    //Android dependencies
+    implementation Deps.androidAnnotations
+    implementation Deps.daggerHiltAndroid
+    implementation Deps.kotlin
+    implementation Deps.retrofit
+    implementation Deps.retrofitGson
+    implementation Deps.okhttp
+    implementation Deps.okhttpLogging
+    implementation Deps.timber
+    implementation Deps.coroutinesCore
+    implementation Deps.coroutinesAndroid
+
+    //Development dependencies
+    debugImplementation Deps.pluto
+    releaseImplementation Deps.plutoNoop
+    debugImplementation Deps.plutoBundle
+    releaseImplementation Deps.plutoBundleNoop
+
+    //Testing dependencies
+    testImplementation Deps.junit
+    testImplementation Deps.mockkAndroid
+    testImplementation Deps.coroutinesTest
+}

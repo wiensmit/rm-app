@@ -1,0 +1,6 @@
+rootProject.name = "rmapp"
+include ':app'
+include ':app:data'
+include ':app:domain'
+include ':app:presentation'
+include ':app:common'

@@ -1,0 +1,80 @@
+apply plugin: 'com.android.library'
+apply from: '../../config-android.gradle'
+apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'dagger.hilt.android.plugin'
+
+android {
+    defaultConfig {
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    buildFeatures {
+        buildConfig true
+        viewBinding true
+        compose true
+    }
+
+    //mockk compose tests fix
+    packagingOptions {
+        resources {
+            excludes += "/META-INF/{AL2.0,LGPL2.1}"
+            merges += "META-INF/LICENSE.md"
+            merges += "META-INF/LICENSE-notice.md"
+        }
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion Versions.compose
+    }
+    namespace 'com.wiensmit.rmapp.presentation'
+}
+
+dependencies {
+    implementation project(':app:domain')
+    implementation project(':app:common')
+
+    //Compile time dependencies
+    kapt Deps.daggerHiltCompiler
+    kapt Deps.kotlinxMetadataProcessor
+    kapt Deps.architectureComponentsCompiler
+
+    //Android dependencies
+    implementation Deps.design
+    implementation Deps.architectureComponentsViewModel
+    implementation Deps.navigationFragment
+
+    // Compose
+    implementation platform(Deps.composeBom)
+    implementation Deps.composeMaterial
+    implementation Deps.composeMaterial3
+    implementation Deps.composeUiToolingPreview
+    debugImplementation Deps.composeDebugUiTooling
+    runtimeOnly Deps.composeRuntime
+    implementation Deps.composeLifecycleRuntime
+    implementation Deps.composeViewModel
+    implementation Deps.composeActivity
+    implementation Deps.composeCoil
+    implementation Deps.composeCoilSvg
+    implementation Deps.composePaging
+    implementation Deps.accompanistPlaceholder
+
+    //Framework dependencies
+    implementation Deps.daggerHiltAndroid
+    implementation Deps.kotlin
+    implementation Deps.timber
+    implementation Deps.coroutinesCore
+    implementation Deps.coroutinesAndroid
+
+    //Testing dependencies
+    androidTestImplementation Deps.mockkAndroid
+    androidTestImplementation Deps.coroutinesTest
+    androidTestImplementation Deps.junitCompose
+    debugImplementation Deps.composeUiTest
+}

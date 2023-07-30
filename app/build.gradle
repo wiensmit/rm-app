@@ -1,0 +1,81 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'dagger.hilt.android.plugin'
+apply from: '../config-android.gradle'
+
+android {
+    defaultConfig {
+        applicationId Config.applicationId
+
+        versionCode Config.versionCode
+        versionName Config.versionName
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        namespace 'com.wiensmit.rmapp'
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("signing/debug.keystore")
+            keyAlias "debug"
+            storePassword "123456"
+            keyPassword "123456"
+        }
+
+        release {
+            storeFile file("signing/prod.keystore")
+            keyAlias "prod"
+            storePassword "123456"
+            keyPassword "123456"
+        }
+    }
+
+    buildFeatures {
+        buildConfig = true
+    }
+
+    buildTypes {
+        debug {
+            debuggable true
+            minifyEnabled false
+            testCoverageEnabled false
+            signingConfig signingConfigs.debug
+            ext.alwaysUpdateBuildId = false
+            applicationIdSuffix ".dev"
+            def packageName = Config.applicationIdDebug
+            buildConfigField "String", "PACKAGE_NAME", "\"$packageName\""
+        }
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            def packageName = Config.applicationIdDebug
+            buildConfigField "String", "PACKAGE_NAME", "\"$packageName\""
+        }
+    }
+}
+
+dependencies {
+    implementation project(':app:data')
+    implementation project(':app:domain')
+    implementation project(':app:presentation')
+    implementation project(':app:common')
+
+    //Compile time dependencies
+    kapt Deps.daggerHiltCompiler
+    kapt Deps.kotlinxMetadataProcessor
+
+    //Framework dependencies
+    implementation Deps.daggerHiltAndroid
+    implementation Deps.coroutinesCore
+    implementation Deps.coroutinesAndroid
+    implementation Deps.kotlin
+    implementation Deps.timber
+    implementation Deps.architectureComponentsProcess
+
+    //Development dependencies
+    debugImplementation Deps.pluto
+    releaseImplementation Deps.plutoNoop
+    debugImplementation Deps.plutoBundle
+    releaseImplementation Deps.plutoBundleNoop
+}

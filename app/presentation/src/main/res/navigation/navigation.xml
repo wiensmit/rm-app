@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/overviewFragment">
+
+
+    <fragment
+        android:id="@+id/overviewFragment"
+        android:name="com.wiensmit.rmapp.presentation.ui.overview.OverviewFragment"
+        android:label="overviewFragment">
+        <action
+            android:id="@+id/action_dashboard_to_addExtras"
+            app:destination="@id/artDetailsFragment"
+            app:enterAnim="@anim/slide_in_bottom"
+            app:exitAnim="@anim/small_slide_out_top"
+            app:popEnterAnim="@anim/small_slide_in_top"
+            app:popExitAnim="@anim/slide_out_bottom" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/artDetailsFragment"
+        android:name="com.wiensmit.rmapp.presentation.ui.artdetails.ArtDetailsFragment"
+        android:label="artDetailsFragment">
+        <argument
+            android:name="objectNumber"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

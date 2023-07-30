@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">Rijks Museum</string>
+    <string name="image_placeholder">image of a </string>
+    <string name="details_screen">Art Details</string>
+    <string name="object_types">type:</string>
+    <string name="object_collection">collection:</string>
+    <string name="materials">materials:</string>
+    <string name="techniques">techniques:</string>
+    <string name="presenting_date">created:</string>
+    <string name="historical_persons">portraying:</string>
+    <string name="makers">created by</string>
+    <string name="maker_unknown">maker unknown</string>
+    <string name="place_of_birth">born:</string>
+    <string name="date_of_death">died:</string>
+    <string name="occupation">occupation:</string>
+    <string name="nationality">nationality:</string>
+    <string name="biography">biography:</string>
+    <string name="error_message">could not load data, please your check internet connection</string>
+    <string name="error_retry">retry</string>
+</resources>
