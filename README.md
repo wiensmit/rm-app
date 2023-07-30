@@ -9,4 +9,4 @@ Fragments are used in combination with compose as this this the mos common way t
 unit test are written for data mappers and repositories, usecases. UItests are written for the 2 screens, overview and
 details
 
-Please use java a java 17 JDK (for example the on embedded in android studio Flamingo) when building this project.
+Please use a java 17 JDK (for example the on embedded in android studio Flamingo) when building this project.
