@@ -44,7 +44,7 @@ object Deps {
     const val retrofitScalars = "com.squareup.retrofit2:converter-scalars:$RETROFIT"
     const val retrofitRxAdapter = "com.squareup.retrofit2:adapter-rxjava2:$RETROFIT"
 
-    private const val OKHTTP = "4.9.1"
+    private const val OKHTTP = "4.11.0"
     const val okhttp = "com.squareup.okhttp3:okhttp:$OKHTTP"
     const val okhttpLogging = "com.squareup.okhttp3:logging-interceptor:$OKHTTP"
     const val gson = "com.google.code.gson:gson:2.8.6"

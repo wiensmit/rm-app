@@ -48,6 +48,7 @@ android {
         release {
             debuggable false
             minifyEnabled true
+            signingConfig signingConfigs.release
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             def packageName = Config.applicationIdDebug
             buildConfigField "String", "PACKAGE_NAME", "\"$packageName\""
